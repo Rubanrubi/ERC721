@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "@openzeppelin/contracts": "^4.4.1",
+    "@openzeppelin/contracts-upgradeable": "^4.4.1",
+    "@openzeppelin/truffle-upgrades": "^1.11.0",
     "axios": "^0.24.0",
     "form-data": "^4.0.0",
     "fs": "^0.0.1-security",

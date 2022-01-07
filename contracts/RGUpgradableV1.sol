@@ -1,21 +1,28 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-contract KuttaPanda is Ownable, ERC721 {
+contract RGUpgradableV1 is ERC721Upgradeable, OwnableUpgradeable, UUPSUpgradeable  {
 
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+    using CountersUpgradeable for CountersUpgradeable.Counter;
+    CountersUpgradeable.Counter private _tokenIds;
     // Optional mapping for token URIs
     mapping(uint256 => string) private _tokenURIs;
 
     // Base URI
     string private _baseURIextended;
 
-    constructor() ERC721("KuttaPanda", "RG") {}
+    function initialize() initializer public {
+         __ERC721_init_unchained("UpgradableKuttaPandaV1", "RG");
+         __Ownable_init_unchained();
+     }
+
+     function _authorizeUpgrade(address) internal override onlyOwner {}
 
     function setBaseURI(string memory baseURI_) external onlyOwner {
         _baseURIextended = baseURI_;
@@ -74,4 +81,10 @@ contract KuttaPanda is Ownable, ERC721 {
     function totalSupply() public view returns (uint256) {
         return _tokenIds.current();
     }
+
+    function testingUpgradable() public view returns (bytes32) {
+        return "Ruban";
+    }
+
+
 }

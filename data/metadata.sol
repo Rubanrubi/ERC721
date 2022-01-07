@@ -6,6 +6,6 @@
     }
   ],
   "description": "Made for Each Other!",
-  "image": "https://ipfs.io/ipfs/QmQYE35JdthxvBZahG77w5XSuPKL2jNkJdtxQo4Pc57U1n",
+  "image": "https://ipfs.io/ipfs/QmdHayiHzzNfbJ4Hrjk4bb2oCfny6rC8VJW3by246U1798",
   "name": "Ruban : The Kutta Panda NFT"
 }
